@@ -45,8 +45,23 @@ public class Dungeon
       //BEGIN GAME
       System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
       System.out.print("\nWhat do you do next? ");
-      String option = input.nextLine();
+      String option = string.toLowerCase(input.nextLine());
       
       
+   }
+   
+   private void options(String option)
+   {
+      //MOVE IN A DIRECTION
+      if (option == "go west" || option == "move west")
+      {
+         if(xAxis != 0)
+         {
+            xAxis--;
+            roomArray[xAxis][yAxis].getDescription;
+         }
+      }
+      
+      //LOOK AROUND
    }
 }
