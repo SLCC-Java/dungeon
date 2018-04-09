@@ -12,6 +12,7 @@ public class Player
       name = this.name;      
    }
    
+   //METHODS
    public String getName()
    {
       return name;
@@ -24,12 +25,12 @@ public class Player
    
    public void addInventory(String inventoryItem)
    {
-      
+      itemInventory.add(inventoryItem);
    }
    
    public void removeInventory(String inventoryItem)
    {
-   
+      itemInventory.remove(inventoryItem);
    }
    
 }
