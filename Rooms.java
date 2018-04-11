@@ -45,21 +45,21 @@ public class Rooms
    
    public void hasItem(String item)
    {
-      if (item == "key")
-      {
-         hasKey = true;
-      }
-      else if (item == "bone")
-      {
-         hasBone = true;
-      }
-      else if (item == "combination")
-      {
-         hasCombination = true;
-      }
-      else if (item == "cable cutters")
-      {
-         hasCableCutters = true;
-      }
+        switch (item) {
+            case "key":
+                this.hasKey = true;
+                break;
+            case "bone":
+                this.hasBone = true;
+                break;
+            case "combination":
+                this.hasCombination = true;
+                break;
+            case "cable cutters":
+                this.hasCableCutters = true;
+                break;
+            default:
+                break;
+        }
    }
 }
