@@ -106,7 +106,7 @@ public class Dungeon
             if(xAxis != 0)
             {
                xAxis--;
-               System.out.println(roomArray[xAxis][yAxis].getDescription());
+               System.out.println(roomArray[yAxis][xAxis].getDescription());
             }
             else
             {
@@ -119,7 +119,7 @@ public class Dungeon
             if (xAxis != 2)
             {
                xAxis++;
-               System.out.println(roomArray[xAxis][yAxis].getDescription());
+               System.out.println(roomArray[yAxis][xAxis].getDescription());
             }
             else
             {
@@ -132,7 +132,7 @@ public class Dungeon
             if (yAxis != 0)
             {
                yAxis--;
-               System.out.println(roomArray[xAxis][yAxis].getDescription());
+               System.out.println(roomArray[yAxis][xAxis].getDescription());
             }
             else
             {
@@ -145,7 +145,7 @@ public class Dungeon
             if (yAxis != 2)
             {
                yAxis++;
-               System.out.println(roomArray[xAxis][yAxis].getDescription());
+               System.out.println(roomArray[yAxis][xAxis].getDescription());
             }
             else
             {
@@ -161,39 +161,290 @@ public class Dungeon
          //LOOK AROUND
          case "look around": 
          case "look":
-            System.out.println(roomArray[xAxis][yAxis].getDescription());
+            System.out.println(roomArray[yAxis][xAxis].getDescription());
             break;
          case "search garbage can":
          case "search garbage":
-            if (roomArray[xAxis][yAxis].getRoom().equals("kitchen"))
+            if (roomArray[yAxis][xAxis].getRoom().equals("kitchen"))
             {
-               if (roomArray[xAxis][yAxis].checkKey())
+               if (roomArray[yAxis][xAxis].hasKey)
                {
-               
+                  System.out.println("In the garbage, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the garbage you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the garbage you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the garbage you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the trash, but there was nothing of interest.");
                }
             }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
          
          case "search dresser":
+            if (roomArray[yAxis][xAxis].getRoom().equals("bedroom"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In one of the dresser drawers, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In one of the dresser drawers, you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In one of the dresser drawers you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In one of the dresser drawers you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the dresser, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search medicine cabinet":
          case "search cabinet":
+            if (roomArray[yAxis][xAxis].getRoom().equals("bathroom"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the medicine cabinet, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the medicine cabinet you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the medicine cabinet you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the medicine cabinet you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the medicine cabinet, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search bookshelf":
          case "search book shelf":
          case "search shelf":
+            if (roomArray[yAxis][xAxis].getRoom().equals("den"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the shelf, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the shelf you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the shelf you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the shelf you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the shelf, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search desk":
          case "search metal desk":
+            if (roomArray[yAxis][xAxis].getRoom().equals("laboratory"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the desk, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the desk you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the desk you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the desk you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the desk, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
          
          case "search armoire":
+            if (roomArray[yAxis][xAxis].getRoom().equals("dining room"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the armoire, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the armoire you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the armoire you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the armoire you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the armoire, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search car":
+            if (roomArray[yAxis][xAxis].getRoom().equals("garage"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the car, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the car you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the car you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the car you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the car, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search box":
          case "search metal box":
+            if (roomArray[yAxis][xAxis].getRoom().equals("storage closet"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the box, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the box you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the box you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the box you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the box, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+            break;
+
          
          case "search coat rack":
          case "search rack":
+            if (roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+            {
+               if (roomArray[yAxis][xAxis].hasKey)
+               {
+                  System.out.println("In the coat rack, you find a discarded key.");
+               }
+               else if (roomArray[yAxis][xAxis].hasBone)
+               {
+                  System.out.println("In the coat rack you find a bone.");
+               }
+               else if (roomArray[yAxis][xAxis].hasCombination)
+               {
+                  System.out.println("In the coat rack you find a piece of paper with a lock combination on it.");                  
+               }
+               else if (roomArray[yAxis][xAxis].hasCableCutters)
+               {
+                  System.out.println("In the coat rack you find some cable cutters.");
+               }
+               else 
+               {
+                  System.out.println("You searched through the coat rack, but there was nothing of interest.");
+               }
+            }
+            else
+            {
+               System.out.println("There's nothing like that here");
+            }
+
             break;
          
          //ERROR MESSAGE

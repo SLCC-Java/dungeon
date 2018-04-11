@@ -3,10 +3,10 @@ public class Rooms
    //FIELDS
    private static final String[] roomsArray = {"kitchen", "bedroom", "bathroom", "den", "laboratory", "dining room", "garage", "storage closet", "front entrance"};
    private static String[] roomTextArray = new String[9];
-   private boolean hasKey = false;
-   private boolean hasBone = false;
-   private boolean hasCombination = false;
-   private boolean hasCableCutters = false;
+   public boolean hasKey = false;
+   public boolean hasBone = false;
+   public boolean hasCombination = false;
+   public boolean hasCableCutters = false;
    private String room;
    private String description;
    
@@ -45,7 +45,6 @@ public class Rooms
    
    public void hasItem(String item)
    {
-<<<<<<< HEAD
       if (item.equals("key"))
       {
          hasKey = true;
@@ -62,35 +61,6 @@ public class Rooms
       {
          hasCableCutters = true;
       }
-=======
-        switch (item) {
-            case "key":
-                this.hasKey = true;
-                break;
-            case "bone":
-                this.hasBone = true;
-                break;
-            case "combination":
-                this.hasCombination = true;
-                break;
-            case "cable cutters":
-                this.hasCableCutters = true;
-                break;
-            default:
-                break;
-        }
->>>>>>> dbad420d0a25f0cf1f2e850653823af68a2f29cf
    }
-   
-   public boolean checkKey()
-   {
-      if(hasKey)
-      {
-         return true;
-      }
-      else 
-      {
-         return false;
-      }
-   }
-}
+}   
+ 
