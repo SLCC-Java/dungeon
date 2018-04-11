@@ -45,6 +45,7 @@ public class Rooms
    
    public void hasItem(String item)
    {
+<<<<<<< HEAD
       if (item.equals("key"))
       {
          hasKey = true;
@@ -61,6 +62,24 @@ public class Rooms
       {
          hasCableCutters = true;
       }
+=======
+        switch (item) {
+            case "key":
+                this.hasKey = true;
+                break;
+            case "bone":
+                this.hasBone = true;
+                break;
+            case "combination":
+                this.hasCombination = true;
+                break;
+            case "cable cutters":
+                this.hasCableCutters = true;
+                break;
+            default:
+                break;
+        }
+>>>>>>> dbad420d0a25f0cf1f2e850653823af68a2f29cf
    }
    
    public boolean checkKey()

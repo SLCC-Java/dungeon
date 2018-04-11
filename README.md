@@ -1,5 +1,7 @@
 # Dungeon
 
+Temporary changes
+
 #### Table of Contents
 
 [Git Commands](#git-commands)
@@ -19,7 +21,7 @@ and
 git config --global user.email "Your email address"
 ````
 
-### Hot to Clone the Project
+### How to Clone the Project
 ````shell
 git clone https://github.com/SLCC-Java/dungeon.git
 ````
