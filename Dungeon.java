@@ -29,10 +29,10 @@ public class Dungeon
             {
                xAxis = j;
                yAxis = i;
-                 
             }
             roomArray[i][j] = new Rooms(roomInitializer);
-            while (numUsed.contains(roomInitializer))
+            numUsed.add(roomInitializer);
+            while (numUsed.contains(roomInitializer) && numUsed.size() != 9)
             {             
                   roomInitializer = rand.nextInt(9);
             }
@@ -91,7 +91,6 @@ public class Dungeon
          System.out.print("\nWhat do you do next? ");
          option = input.nextLine();
          option = option.toLowerCase();
-         System.out.print(option);
          options(option);
       }
       
@@ -106,25 +105,73 @@ public class Dungeon
             if(xAxis != 0)
             {
                xAxis--;
-               roomArray[xAxis][yAxis].getDescription();
+               System.out.println(roomArray[xAxis][yAxis].getDescription());
             }
             else
             {
-               System.out.print(xAxis);
-               System.out.println("You cannot go that direction.");
+               messages(1);
             }
             break;
+         
+         case "go east":
+         case "move east":
+            if (xAxis != 2)
+            {
+               xAxis++;
+               System.out.println(roomArray[xAxis][yAxis].getDescription());
+            }
+            else
+            {
+               messages(1);
+            }
+            break;
+            
+         case "go north":
+         case "move north":
+            if (yAxis != 0)
+            {
+               yAxis--;
+               System.out.println(roomArray[xAxis][yAxis].getDescription());
+            }
+            else
+            {
+               messages(1);
+            }
+            break;
+            
+         case "go south":
+         case "move south":
+            if (yAxis != 2)
+            {
+               yAxis++;
+               System.out.println(roomArray[xAxis][yAxis].getDescription());
+            }
+            else
+            {
+               messages(1);
+            }
+            break;
+
+
          
       
 
       
-      //LOOK AROUND
+         //LOOK AROUND
          case "look around": 
          case "look":
             System.out.println(roomArray[xAxis][yAxis].getDescription());
+            break;
       
-      
-      
+      }
+   }
+   
+   //REUSABLE MESSAGES
+   private static void messages(int choice)
+   {
+      if (choice == 1)
+      {
+         System.out.println("You cannot go in that direction");
       }
    }
 }
