@@ -96,6 +96,7 @@ public class Dungeon
       
    }
    
+   //USER INPUT OPTIONS
    private static void options(String option)
    {
       switch (option)
@@ -151,7 +152,7 @@ public class Dungeon
                messages(1);
             }
             break;
-
+         
 
          
       
@@ -162,7 +163,43 @@ public class Dungeon
          case "look":
             System.out.println(roomArray[xAxis][yAxis].getDescription());
             break;
-      
+         case "search garbage can":
+         case "search garbage":
+            if (roomArray[xAxis][yAxis].getRoom().equals("kitchen"))
+            {
+               if (roomArray[xAxis][yAxis].checkKey())
+               {
+               
+               }
+            }
+         
+         case "search dresser":
+         
+         case "search medicine cabinet":
+         case "search cabinet":
+         
+         case "search bookshelf":
+         case "search book shelf":
+         case "search shelf":
+         
+         case "search desk":
+         case "search metal desk":
+         
+         case "search armoire":
+         
+         case "search car":
+         
+         case "search box":
+         case "search metal box":
+         
+         case "search coat rack":
+         case "search rack":
+            break;
+         
+         //ERROR MESSAGE
+         default: 
+            System.out.println("I don't understand. Type 'help' to see list of possible commands.");
+
       }
    }
    

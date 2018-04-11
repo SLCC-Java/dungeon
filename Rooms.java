@@ -45,21 +45,33 @@ public class Rooms
    
    public void hasItem(String item)
    {
-      if (item == "key")
+      if (item.equals("key"))
       {
          hasKey = true;
       }
-      else if (item == "bone")
+      else if (item.equals("bone"))
       {
          hasBone = true;
       }
-      else if (item == "combination")
+      else if (item.equals("combination"))
       {
          hasCombination = true;
       }
-      else if (item == "cable cutters")
+      else if (item.equals("cable cutters"))
       {
          hasCableCutters = true;
+      }
+   }
+   
+   public boolean checkKey()
+   {
+      if(hasKey)
+      {
+         return true;
+      }
+      else 
+      {
+         return false;
       }
    }
 }
