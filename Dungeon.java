@@ -7,12 +7,14 @@ public class Dungeon
    private static int xAxis;
    private static int yAxis;
    private static Rooms[][] roomArray = new Rooms[3][3];
+   private static Player player = new Player();
+
    
    
    public static void main (String[] args)
    {
       Random rand = new Random();
-      
+      ExitRoom exitRoom = new ExitRoom();
       Scanner input = new Scanner(System.in);
       ArrayList<Integer> roomGenerator = new ArrayList<Integer>();
       
@@ -80,8 +82,8 @@ public class Dungeon
       //CREATE AN INSTANCE OF PLAYER
       System.out.print("Enter your name: ");
       String playerName = input.nextLine();
-      Player player = new Player(playerName);
-      
+      player.setName(playerName);
+            
       //BEGIN GAME
       System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
       
@@ -163,6 +165,8 @@ public class Dungeon
          case "look":
             System.out.println(roomArray[yAxis][xAxis].getDescription());
             break;
+            
+         //SEARCH
          case "search garbage can":
          case "search garbage":
             if (roomArray[yAxis][xAxis].getRoom().equals("kitchen"))
@@ -187,6 +191,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the trash, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -217,6 +222,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the dresser, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -249,6 +255,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the medicine cabinet, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -282,6 +289,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the shelf, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -314,6 +322,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the desk, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -344,6 +353,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the armoire, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -380,6 +390,7 @@ public class Dungeon
             {
                System.out.println("There's nothing like that here");
             }
+            roomArray[yAxis][xAxis].setSearched();
             break;
 
          
@@ -407,6 +418,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the box, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -439,6 +451,7 @@ public class Dungeon
                {
                   System.out.println("You searched through the coat rack, but there was nothing of interest.");
                }
+               roomArray[yAxis][xAxis].setSearched();
             }
             else
             {
@@ -446,7 +459,43 @@ public class Dungeon
             }
 
             break;
-         
+            
+         //PICK UP
+         case "pick up key":
+            if (roomArray[yAxis][xAxis].getSearched() && roomArray[yAxis][xAxis].hasKey)
+            {
+               System.out.println("Key added to your inventory");
+               player.addInventory("key");
+            }
+            break;
+         case "pick up bone":
+            if (roomArray[yAxis][xAxis].getSearched() && roomArray[yAxis][xAxis].hasBone)
+            {
+               System.out.println("Bone added to your inventory");
+               player.addInventory("bone");
+            }
+            break;
+         case "pick up combination":
+            if (roomArray[yAxis][xAxis].getSearched() && roomArray[yAxis][xAxis].hasCombination)
+            {
+               System.out.println("Combination added to your inventory");
+               player.addInventory("combination");
+            }
+            break;
+         case "pick up cable cutters":
+            if (roomArray[yAxis][xAxis].getSearched() && roomArray[yAxis][xAxis].hasCableCutters)
+            {
+               System.out.println("Cable Cutters added to your inventory");
+               player.addInventory("cable cutters");
+            }
+            break;
+            
+         //HELP MESSAGE
+         case "help":
+            System.out.println("Welcome to DUNGEON!\nThe object of the game is to explore the rooms and find a way to escape.");
+            System.out.println("\nPossible Commands:\n\nlook at\nsearch\npick up\nuse\ngo north, go south, go east, go west\nquit");
+            break;
+            
          //ERROR MESSAGE
          default: 
             System.out.println("I don't understand. Type 'help' to see list of possible commands.");

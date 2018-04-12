@@ -9,6 +9,7 @@ public class Rooms
    public boolean hasCableCutters = false;
    private String room;
    private String description;
+   private boolean searched = false;
    
 
    
@@ -61,6 +62,16 @@ public class Rooms
       {
          hasCableCutters = true;
       }
+   }
+   
+   public void setSearched()
+   {
+      searched = true;
+   }
+   
+   public boolean getSearched()
+   {
+      return searched;
    }
 }   
  
