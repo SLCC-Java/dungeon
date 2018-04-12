@@ -8,13 +8,15 @@ public class Dungeon
    private static int yAxis;
    private static Rooms[][] roomArray = new Rooms[3][3];
    private static Player player = new Player();
+   private static boolean endGame;
+   private static ExitRoom exitRoom = new ExitRoom();
 
    
    
    public static void main (String[] args)
    {
       Random rand = new Random();
-      ExitRoom exitRoom = new ExitRoom();
+      
       Scanner input = new Scanner(System.in);
       ArrayList<Integer> roomGenerator = new ArrayList<Integer>();
       
@@ -94,6 +96,12 @@ public class Dungeon
          option = input.nextLine();
          option = option.toLowerCase();
          options(option);
+      }
+      
+      //END GAME
+      if (endGame)
+      {
+         System.out.println("You walk out into the blazing midday sun. It takes a moment for your eyes to adjust, and when they do you're struck with horror. Your hometown lies in ruins before you. Demolished buildings scatter the street, and there is not a soul in  sight. A newspaper blows by in the wind. You pick it up, and the date immediately jumps out at you. The year is 2218. You’ve somehow been asleep for 200 years.");
       }
       
    }
@@ -487,6 +495,25 @@ public class Dungeon
             {
                System.out.println("Cable Cutters added to your inventory");
                player.addInventory("cable cutters");
+            }
+            break;
+            
+         //USE
+         case "use bone":
+            if (player.getInventory().contains("bone"))
+            {
+               if (roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               {
+                  if(exitRoom.isGuarded)
+                  {
+                     System.out.println("the dog takes the bone and starts chewing on it in the corner. He seems distracted enough for you to try the door.");
+                     exitRoom.isGuarded = false;
+                  }
+               }
+               else 
+               {
+                  System.out.println("I don't see a use for it.");
+               }
             }
             break;
             

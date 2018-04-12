@@ -17,7 +17,7 @@ public class Player
       this.name = name;
    }
    
-   public ArrayList<String> getinventory()
+   public ArrayList<String> getInventory()
    {
       return itemInventory;
    }
