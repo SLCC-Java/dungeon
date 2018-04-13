@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Dungeon
 {
+   //FIELDS
    private static int itemXAxis;
    private static int itemYAxis;
    private static int xAxis;
@@ -10,6 +11,7 @@ public class Dungeon
    private static Player player = new Player();
    private static boolean endGame;
    private static ExitRoom exitRoom = new ExitRoom();
+   private static String playerName;
 
    
    
@@ -83,12 +85,12 @@ public class Dungeon
 
       //CREATE AN INSTANCE OF PLAYER
       System.out.print("Enter your name: ");
-      String playerName = input.nextLine();
+      playerName = input.nextLine();
       player.setName(playerName);
             
       //BEGIN GAME
       System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
-      
+      player.addInventory("note");
       String option = "";
       while (!option.equals("quit") && !endGame)
       {
@@ -172,6 +174,33 @@ public class Dungeon
          case "look around": 
          case "look":
             System.out.println(roomArray[yAxis][xAxis].getDescription());
+            break;
+         case "look at door":
+            if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+            {
+               if (exitRoom.isGuarded)
+               {
+                  System.out.println("You can't get a close look at the door because of the dog. You'll have to do something about him first");
+               }
+               else if (exitRoom.isPadlocked)
+               {
+                  System.out.println("There are bars blocking access to the door. It looks like they can be removed, but there's a padlock holding it in place. You'll need the combination.");
+               }
+               else if (exitRoom.isChained)
+               {
+                  System.out.println("There is a chain blocking the door, and it looks like it's welded to the wall.");
+               }
+               else if (exitRoom.isLocked)
+               {
+                  System.out.println("Someone really doesn't want you to get out. The door is locked.");
+               }
+            }
+            break;
+         case "look at note":
+            System.out.println(playerName + ",\nI hope I'm waking you up in time. You're in great danger. If you \ndon't get out of this house, you're going to die. The people who \ntrapped you here will be back, and they will not let you live. \nGet out of this house as fast as you can. I'll try to wait for \nyou outside.");
+            break;
+         case "look at inventory":
+            System.out.println(player.getInventory());
             break;
             
          //SEARCH
@@ -524,7 +553,7 @@ public class Dungeon
          case "use combination":
             if (player.getInventory().contains("combination"))
             {
-               if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               if(roomArray[yAxis][xAxis].getRoom().equals("front entrance") && !exitRoom.isGuarded)
                {
                   if (exitRoom.isPadlocked)
                   {
@@ -532,6 +561,10 @@ public class Dungeon
                      exitRoom.isPadlocked = false;
                      player.removeInventory("padlock");
                   }
+               }
+               else if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               {
+                  System.out.println("You don't want to try anything until you get the dog out of the way.");
                }
                else
                {
@@ -593,10 +626,7 @@ public class Dungeon
          case "use door":
             if(exitRoom.readyToOpen())
             {
-               option = "quit";
-               endGame = true;
-               System.out.println(option);
-               
+               endGame = true;              
             }
             break;
 
