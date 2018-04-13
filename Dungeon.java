@@ -88,7 +88,7 @@ public class Dungeon
       System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
       
       String option = "";
-      while (!option.equals("quit"))
+      while (!option.equals("quit") && !endGame)
       {
          System.out.print("\nWhat do you do next? ");
          option = input.nextLine().toLowerCase();
@@ -507,20 +507,117 @@ public class Dungeon
                   {
                      System.out.println("the dog takes the bone and starts chewing on it in the corner. He seems distracted enough for you to try the door.");
                      exitRoom.isGuarded = false;
+                     player.removeInventory("bone");
                   }
                }
                else 
                {
-                  System.out.println("I don't see a use for it.");
+                  System.out.println("You don't see a use for it.");
                }
             }
+            else
+            {
+               System.out.println("You don't have that item.");
+            }
             break;
+         case "use combination":
+            if (player.getInventory().contains("combination"))
+            {
+               if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               {
+                  if (exitRoom.isPadlocked)
+                  {
+                     System.out.println("The combination works! You remove the padlock and unlatch the door.");
+                     exitRoom.isPadlocked = false;
+                     player.removeInventory("padlock");
+                  }
+               }
+               else
+               {
+                  System.out.println("You don't see a use for it.");
+               }
+            }
+            else
+            {
+               System.out.println("You don't have that item.");
+            }
+            break;
+         case "use key":
+            if (player.getInventory().contains("key"))
+            {
+               if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               {
+                  if (exitRoom.isLocked)
+                  {
+                     System.out.println("The key turns easily in the lock. The door is now unlocked.");
+                     exitRoom.isLocked = false;
+                     player.removeInventory("key");
+                  }
+               }
+               else
+               {
+                  System.out.println("You don't see a use for it.");
+               }
+            }
+            else
+            {
+               System.out.println("You don't have that item.");
+            }
+            break;
+         case "use cable cutters":
+            if (player.getInventory().contains("cable cutters"))
+            {
+               if(roomArray[yAxis][xAxis].getRoom().equals("front entrance"))
+               {
+                  if (exitRoom.isChained)
+                  {
+                     System.out.println("It takes some effort, but you are able to break the chain with the cable cutters.");
+                     exitRoom.isChained = false;
+                     player.removeInventory("cable cutters");
+                  }
+               }
+               else
+               {
+                  System.out.println("You don't see a use for it.");
+               }
+            }
+            else
+            {
+               System.out.println("You don't have that item.");
+            }
+            break;
+            
+         //OPEN DOOR TO END GAME
+         case "open door":
+         case "use door":
+            if(exitRoom.readyToOpen())
+            {
+               option = "quit";
+               endGame = true;
+               System.out.println(option);
+               
+            }
+            break;
+
             
          //HELP MESSAGE
          case "help":
             System.out.println("Welcome to DUNGEON!\nThe object of the game is to explore the rooms and find a way to escape.");
             System.out.println("\nPossible Commands:\n\nlook at\nsearch\npick up\nuse\ngo north, go south, go east, go west\nquit");
             break;
+            
+         case "quit":
+            break;
+            
+         //FOR TESTING PURPOSES
+         case "add all items":
+            player.addInventory("bone");
+            player.addInventory("key");
+            player.addInventory("cable cutters");
+            player.addInventory("combination");
+            System.out.println("success");
+            break;
+
             
          //ERROR MESSAGE
          default: 
