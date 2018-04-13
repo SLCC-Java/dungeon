@@ -7,7 +7,6 @@ public class Dungeon
    private static int xAxis;
    private static int yAxis;
    private static Rooms[][] roomArray = new Rooms[3][3];
-   private static Player player = new Player();
    private static boolean endGame;
    private static ExitRoom exitRoom = new ExitRoom();
 
@@ -83,8 +82,7 @@ public class Dungeon
 
       //CREATE AN INSTANCE OF PLAYER
       System.out.print("Enter your name: ");
-      String playerName = input.nextLine();
-      player.setName(playerName);
+      Player player = new Player(input.nextLine());
             
       //BEGIN GAME
       System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
@@ -93,15 +91,16 @@ public class Dungeon
       while (!option.equals("quit"))
       {
          System.out.print("\nWhat do you do next? ");
-         option = input.nextLine();
-         option = option.toLowerCase();
-         options(option);
+         option = input.nextLine().toLowerCase();
+         player.options(option);
+
+      //    options(option);
       }
       
       //END GAME
       if (endGame)
       {
-         System.out.println("You walk out into the blazing midday sun. It takes a moment for your eyes to adjust, and when they do you're struck with horror. Your hometown lies in ruins before you. Demolished buildings scatter the street, and there is not a soul in  sight. A newspaper blows by in the wind. You pick it up, and the date immediately jumps out at you. The year is 2218. You’ve somehow been asleep for 200 years.");
+         System.out.println("You walk out into the blazing midday sun. It takes a moment for your eyes to adjust, and when they do you're struck with horror. Your hometown lies in ruins before you. Demolished buildings scatter the street, and there is not a soul in  sight. A newspaper blows by in the wind. You pick it up, and the date immediately jumps out at you. The year is 2218. Youï¿½ve somehow been asleep for 200 years.");
       }
       
    }
