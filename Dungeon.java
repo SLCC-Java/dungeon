@@ -198,6 +198,8 @@ public class Dungeon
             }
             break;
          case "look at note":
+         case "look at paper":
+         case "look at piece of paper":
             System.out.println(playerName + ",\nI hope I'm waking you up in time. You're in great danger. If you \ndon't get out of this house, you're going to die. The people who \ntrapped you here will be back, and they will not let you live. \nGet out of this house as fast as you can. I'll try to wait for \nyou outside.");
             break;
          case "look at inventory":
