@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Player {
     //FIELDS
@@ -62,6 +62,8 @@ public class Player {
         case "search":
             if(check.length > 1 && check[1].contains("inventory"))
                 lookAtInventory();
+            //TODO: Look at specific item
+            //else if (check.length > 1 && check[1].contains()) break;
             else if (check.length > 1)
                 look(check[1], room);
             else
@@ -157,6 +159,7 @@ public class Player {
         System.out.println("Tip of the room");
     }
 
+    //TODO: Helpful tip for items
     private void help(Item items) {
         System.out.println("Tip for the item");
     }
