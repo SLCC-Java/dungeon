@@ -15,6 +15,19 @@ public class Dungeon {
         ConstructDungeon(size);
     }
 
+    public void start(Player player){
+        System.out.println("You wake up in a room that you don't recognize.\n The last thing you remember is going to bed at \nhome. As you stand up, a piece of paper falls to \nthe ground. You reach down and pick it up.");
+        player.addInventory(
+            new Item(
+                "Note",
+                "" + player.getName() + 
+                ",\nI hope I'm waking you up in time. You're in great danger. If you\n"+
+                "don't get out of this house, you're going to die. The people who\n"+
+                "trapped you here will be back, and they will not let you live.\n"+
+                "Get out of this house as fast as you can. I'll try to wait for\n"+
+                "you outside."));
+    }
+
     public int[] getStartLocation() {
         return startLocation;
     }

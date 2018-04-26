@@ -13,7 +13,7 @@ public class EscapeGame {
             Dungeon dungeon = new Dungeon();
             System.out.println("What is your name?");
             Player player = new Player(input.nextLine(), dungeon.getStartLocation());
-            System.out.println(player.getName());
+            dungeon.start(player);
             while (!dungeon.escaped) {
                 player.options(input.nextLine(), dungeon.getRoom(player.getLocation()), dungeon);
                 dungeon.getRoom(player.getLocation()).getDescription();
