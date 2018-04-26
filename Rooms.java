@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Rooms
 {
    //FIELDS
@@ -11,7 +13,7 @@ public class Rooms
    private String description;
    private boolean searched = false;
    
-
+   private String roomArray[][];
    
    
    
